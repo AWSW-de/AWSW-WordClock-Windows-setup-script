@@ -1,7 +1,7 @@
 ﻿# Automatic Arduino IDE setup for WordClock by AWSW
 # DO NOT CHANGE ANYTHING FROM THIS LINE ON ! # # DO NOT CHANGE ANYTHING FROM THIS LINE ON ! # # DO NOT CHANGE ANYTHING FROM THIS LINE ON ! #
 
-$ScriptVersion = "V1.0.2"
+$ScriptVersion = "V1.0.3"
 
 #####################################################################################################
 # Was the script started with Administrator priviliges?:
@@ -366,7 +366,7 @@ Unzip "$DestinationFolder1\ArduinoJson.zip" $DestinationFolder2
 Unzip "$DestinationFolder1\LITTLEFS.zip" $DestinationFolder2
 Unzip "$DestinationFolder1\Telegram-Bot.zip" $DestinationFolder2
 Unzip "$DestinationFolder1\ESP32Time.zip" $DestinationFolder2
-Unzip "$env:USERPROFILE\Downloads\AWSW-WordClock-16x16-LED-matrix-2023.zip" "$DestinationFolder0"
+Unzip "$env:USERPROFILE\Downloads\AWSW-WordClock-16x8-LED-matrix.zip" "$DestinationFolder0"
 Unzip "$env:USERPROFILE\Downloads\AWSW-WordClock-16x16-LED-matrix.zip" "$DestinationFolder0"
 clear
 
