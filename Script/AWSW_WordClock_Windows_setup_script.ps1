@@ -1,7 +1,7 @@
 ﻿# Automatic Arduino IDE setup for WordClock by AWSW
 # DO NOT CHANGE ANYTHING FROM THIS LINE ON ! # # DO NOT CHANGE ANYTHING FROM THIS LINE ON ! # # DO NOT CHANGE ANYTHING FROM THIS LINE ON ! #
 
-$ScriptVersion = "V1.0.1"
+$ScriptVersion = "V1.0.2"
 
 #####################################################################################################
 # Was the script started with Administrator priviliges?:
@@ -339,10 +339,11 @@ Invoke-WebRequest -Uri "https://codeload.github.com/fbiego/ESP32Time/zip/refs/he
 Write-Host " "
 Write-Host "Downloading code for AWSW-WordClock models now:"
 Write-Host " "
-Write-Host "Downloading file: Code for AWSW-WordClock-16x16-LED-matrix-2023 (V1, V2 and V3)"
+Write-Host "Downloading file: Code for AWSW WordClock 16x8 LED Matrix 2023"
+Write-Host "Downloading file: Code for AWSW WordClock 16x8 LED Matrix 2024"
 Write-Host " "
-Invoke-WebRequest -Uri "https://codeload.github.com/AWSW-de/WordClock-16x16-LED-matrix-2023/zip/refs/heads/main" -OutFile "$env:USERPROFILE\Downloads\AWSW-WordClock-16x16-LED-matrix-2023.zip"
-Write-Host "Downloading file: Code for AWSW-WordClock-16x16-LED-matrix      (Smart variant with Telegram)"
+Invoke-WebRequest -Uri "https://codeload.github.com/AWSW-de/WordClock-16x16-LED-matrix-2023/zip/refs/heads/main" -OutFile "$env:USERPROFILE\Downloads\AWSW-WordClock-16x8-LED-matrix.zip"
+Write-Host "Downloading file: Code for AWSW WordClock 16x16 LED Matrix (Smart variant with Telegram)"
 Write-Host " "
 Invoke-WebRequest -Uri "https://codeload.github.com/AWSW-de/WordClock-16x16-LED-matrix/zip/refs/heads/main" -OutFile "$env:USERPROFILE\Downloads\AWSW-WordClock-16x16-LED-matrix.zip"
 Write-Host " "
@@ -389,7 +390,7 @@ Sleep 1
 Write-Host "Cleaning up the temporary library download folder:"
 Write-Host " "
 Remove-Item $DestinationFolder1 -Recurse
-Remove-Item "$env:USERPROFILE\Downloads\AWSW-WordClock-16x16-LED-matrix-2023.zip"
+Remove-Item "$env:USERPROFILE\Downloads\AWSW-WordClock-16x8-LED-matrix.zip"
 Remove-Item "$env:USERPROFILE\Downloads\AWSW-WordClock-16x16-LED-matrix.zip"
 Sleep 1
 clear
