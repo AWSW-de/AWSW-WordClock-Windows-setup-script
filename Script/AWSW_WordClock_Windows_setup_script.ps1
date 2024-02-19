@@ -1,7 +1,7 @@
 ﻿# Automatic Arduino IDE setup for WordClock by AWSW
 # DO NOT CHANGE ANYTHING FROM THIS LINE ON ! # # DO NOT CHANGE ANYTHING FROM THIS LINE ON ! # # DO NOT CHANGE ANYTHING FROM THIS LINE ON ! #
 
-$ScriptVersion = "V1.0.3"
+$ScriptVersion = "V1.0.4"
 
 #####################################################################################################
 # Was the script started with Administrator priviliges?:
@@ -157,24 +157,26 @@ Invoke-Command -ScriptBlock {Get-CimInstance -ClassName Win32_Product -Filter "n
 Write-Host "Automatic uninstall of old Arduino IDE installation done"
 Write-Host " "
 Sleep 3
-clear
+
 
 #####################################################################################################
 # Automatic Arduino IDE .MSI download:
 #####################################################################################################
-Write-Host "Downloading file: Arduino IDE..." 
+clear
+Write-Host "Downloading file: Arduino IDE 2.3.1:" 
 Write-Host " "
 Write-Host "Please wait! This might take some time... Do not stop the script!"
 Write-Host " "
 $ProgressPreference = 'SilentlyContinue'
-Invoke-WebRequest -Uri "https://downloads.arduino.cc/arduino-ide/arduino-ide_2.2.1_Windows_64bit.msi" -OutFile "$DestinationFolder1\arduino-ide_Windows_64bit.msi"
+Invoke-WebRequest -Uri "https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.1_Windows_64bit.msi" -OutFile "$DestinationFolder1\arduino-ide_Windows_64bit.msi"
 Sleep 3
 
 
 #####################################################################################################
 # Automatic Arduino IDE setup installation:
 #####################################################################################################
-Write-Host "Automatic install of new Arduino IDE:"
+clear
+Write-Host "Automatic install of new Arduino IDE 2.3.1:"
 Write-Host " "
 Start-Process -FilePath "$DestinationFolder1\arduino-ide_Windows_64bit.msi" -ArgumentList "/qb /norestart" -Wait
 Sleep 3
@@ -184,46 +186,7 @@ Sleep 3
 # Start and quit Arduino IDE once:
 #####################################################################################################
 clear
-Write-Host "!!! Now Arduino IDE will be started automatically. Wait until it is fully loaded and closed automatically. "
-Write-Host " "
-Write-Host "! Do not do anything ! Do not do anything ! Do not do anything ! Do not do anything ! Do not do anything !"
-Write-Host " "
-Write-Host "Starting in 10"
-Write-Host " "
 Sleep 1
-clear
-Write-Host "!!! Now Arduino IDE will be started automatically. Wait until it is fully loaded and closed automatically. "
-Write-Host " "
-Write-Host "! Do not do anything ! Do not do anything ! Do not do anything ! Do not do anything ! Do not do anything !"
-Write-Host " "
-Write-Host "Starting in 9"
-Write-Host " "
-Sleep 1
-clear
-Write-Host "!!! Now Arduino IDE will be started automatically. Wait until it is fully loaded and closed automatically. "
-Write-Host " "
-Write-Host "! Do not do anything ! Do not do anything ! Do not do anything ! Do not do anything ! Do not do anything !"
-Write-Host " "
-Write-Host "Starting in 8"
-Write-Host " "
-Sleep 1
-clear
-Write-Host "!!! Now Arduino IDE will be started automatically. Wait until it is fully loaded and closed automatically. "
-Write-Host " "
-Write-Host "! Do not do anything ! Do not do anything ! Do not do anything ! Do not do anything ! Do not do anything !"
-Write-Host " "
-Write-Host "Starting in 7"
-Write-Host " "
-Sleep 1
-clear
-Write-Host "!!! Now Arduino IDE will be started automatically. Wait until it is fully loaded and closed automatically. "
-Write-Host " "
-Write-Host "! Do not do anything ! Do not do anything ! Do not do anything ! Do not do anything ! Do not do anything !"
-Write-Host " "
-Write-Host "Starting in 6"
-Write-Host " "
-Sleep 1
-clear
 Write-Host "!!! Now Arduino IDE will be started automatically. Wait until it is fully loaded and closed automatically. "
 Write-Host " "
 Write-Host "! Do not do anything ! Do not do anything ! Do not do anything ! Do not do anything ! Do not do anything !"
@@ -274,7 +237,7 @@ for ($i=1; $i -le 1; $i++)
     # keep track of timeout event
     $timeouted = $null # reset any previously set timeout
     # wait up to x seconds for normal termination
-    $proc | Wait-Process -Timeout 15 -ErrorAction SilentlyContinue -ErrorVariable timeouted
+    $proc | Wait-Process -Timeout 20 -ErrorAction SilentlyContinue -ErrorVariable timeouted
     if ($timeouted)
     {
         # terminate the process
@@ -302,7 +265,7 @@ $fileName = "$env:USERPROFILE\.arduinoIDE\arduino-cli.yaml"
         if ($_ -match "  additional_urls:") 
         {
   #Add lines after the selected pattern:
-  "   - https://dl.espressif.com/dl/package_esp32_index.json"
+  "     - https://dl.espressif.com/dl/package_esp32_index.json"
         }
     } | Set-Content $fileName
 
