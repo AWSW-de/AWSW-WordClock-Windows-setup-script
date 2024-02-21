@@ -1,7 +1,7 @@
 ﻿# Automatic Arduino IDE setup for WordClock by AWSW
 # DO NOT CHANGE ANYTHING FROM THIS LINE ON ! # # DO NOT CHANGE ANYTHING FROM THIS LINE ON ! # # DO NOT CHANGE ANYTHING FROM THIS LINE ON ! #
 
-$ScriptVersion = "V1.0.4"
+$ScriptVersion = "V1.0.5"
 
 #####################################################################################################
 # Was the script started with Administrator priviliges?:
@@ -52,19 +52,6 @@ Write-Host " "
 pause
 clear
 
-Write-Host "Starting in 10... Please just wait..."
-Sleep 1
-clear
-Write-Host "Starting in 9... Please just wait..."
-Sleep 1
-clear
-Write-Host "Starting in 8... Please just wait..."
-Sleep 1
-clear
-Write-Host "Starting in 7... Please just wait..."
-Sleep 1
-clear
-Write-Host "Starting in 6... Please just wait..."
 Sleep 1
 clear
 Write-Host "Starting in 5... Please just wait..."
@@ -163,12 +150,12 @@ Sleep 3
 # Automatic Arduino IDE .MSI download:
 #####################################################################################################
 clear
-Write-Host "Downloading file: Arduino IDE 2.3.1:" 
+Write-Host "Downloading file: Arduino IDE 2.3.2" 
 Write-Host " "
 Write-Host "Please wait! This might take some time... Do not stop the script!"
 Write-Host " "
 $ProgressPreference = 'SilentlyContinue'
-Invoke-WebRequest -Uri "https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.1_Windows_64bit.msi" -OutFile "$DestinationFolder1\arduino-ide_Windows_64bit.msi"
+Invoke-WebRequest -Uri "https://downloads.arduino.cc/arduino-ide/arduino-ide_2.3.2_Windows_64bit.msi" -OutFile "$DestinationFolder1\arduino-ide_Windows_64bit.msi"
 Sleep 3
 
 
@@ -176,7 +163,7 @@ Sleep 3
 # Automatic Arduino IDE setup installation:
 #####################################################################################################
 clear
-Write-Host "Automatic install of new Arduino IDE 2.3.1:"
+Write-Host "Automatic install of new Arduino IDE 2.3.2:"
 Write-Host " "
 Start-Process -FilePath "$DestinationFolder1\arduino-ide_Windows_64bit.msi" -ArgumentList "/qb /norestart" -Wait
 Sleep 3
