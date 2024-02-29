@@ -12,3 +12,5 @@ This ensures that the compile will work after this script was used but can cause
 Everythng will be downloaded and installed for you... You just need to wait until the process is finished... =)
 
 **IMPORTANT: You are using this script at your own risk. The manual way to do this is well described too !**
+
+[![Automatic Arduino IDE setup script V1.0.0 test](http://img.youtube.com/vi/ghuJDExp7o0/0.jpg)](http://www.youtube.com/watch?v=ghuJDExp7o0 "Automatic Arduino IDE setup script V1.0.0 test")
