@@ -13,4 +13,5 @@ Everythng will be downloaded and installed for you... You just need to wait unti
 
 **IMPORTANT: You are using this script at your own risk. The manual way to do this is well described too !**
 
-[![Automatic Arduino IDE setup script V1.0.0 test](http://img.youtube.com/vi/ghuJDExp7o0/0.jpg)](http://www.youtube.com/watch?v=ghuJDExp7o0 "Automatic Arduino IDE setup script V1.0.0 test")
+
+[![Automatic Arduino IDE + WordClock setup script V2.0.0](http://img.youtube.com/vi/JO8deIcUdMY/0.jpg)](http://www.youtube.com/watch?v=JO8deIcUdMY "Automatic Arduino IDE + WordClock setup script V2.0.0")
