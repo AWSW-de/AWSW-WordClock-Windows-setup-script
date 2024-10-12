@@ -1,7 +1,7 @@
 ﻿# Automatic Arduino IDE setup for WordClock by AWSW
 # DO NOT CHANGE ANYTHING FROM THIS LINE ON ! # # DO NOT CHANGE ANYTHING FROM THIS LINE ON ! # # DO NOT CHANGE ANYTHING FROM THIS LINE ON ! #
 
-$ScriptVersion = "V2.0.0" # 06.10.2024
+$ScriptVersion = "V2.0.1" # 12.10.2024
 
 #####################################################################################################
 # Was the script started with Administrator priviliges?:
@@ -174,7 +174,7 @@ clear
 Write-Host " "
 Write-Host "STEP 4 OF" $ScriptSteps "- Automatic install of new Arduino IDE 2.3.3:"
 Write-Host " "
-Start-Process -FilePath "$DestinationFolder1\arduino-ide_Windows_64bit.msi" -ArgumentList "/qb /norestart" -Wait
+Start-Process -FilePath "$DestinationFolder1\arduino-ide_Windows_64bit.msi" -ArgumentList "/qn /passive /norestart" -Wait
 Sleep 3
 
 
@@ -233,7 +233,7 @@ for ($i=1; $i -le 1; $i++)
     # keep track of timeout event
     $timeouted = $null # reset any previously set timeout
     # wait up to x seconds for normal termination
-    $proc | Wait-Process -Timeout 60 -ErrorAction SilentlyContinue -ErrorVariable timeouted
+    $proc | Wait-Process -Timeout 90 -ErrorAction SilentlyContinue -ErrorVariable timeouted
     if ($timeouted)
     {
         # terminate the process
@@ -452,7 +452,7 @@ Write-Host "STEP 8 OF" $ScriptSteps "- Closing Arduino IDE window now automatica
 Write-Host " "
 Write-Host " "
 Write-Host " "
-Sleep 10
+Sleep 30
 $wshell.AppActivate($proc.Id)
 $wshell.SendKeys("%{F4}") # terminate the process
 clear
@@ -466,27 +466,39 @@ clear
 Write-Host " "
 Write-Host "STEP 9 OF" $ScriptSteps "- Downloading required library files and the WordClock code:"
 Write-Host " "
+Write-Host " "
 Sleep 3
 Write-Host "Downloading file: Adafruit_NeoPixel.zip" 
 Invoke-WebRequest -Uri "https://codeload.github.com/adafruit/Adafruit_NeoPixel/zip/refs/heads/master" -OutFile "$DestinationFolder1\Adafruit_NeoPixel.zip"
+Write-Host " "
 Write-Host "Downloading file: AsyncTCP.zip"
 Invoke-WebRequest -Uri "https://codeload.github.com/me-no-dev/AsyncTCP/zip/refs/heads/master" -OutFile "$DestinationFolder1\AsyncTCP.zip"
+Write-Host " "
 Write-Host "Downloading file: ESPAsyncWebServer.zip"
 Invoke-WebRequest -Uri "https://codeload.github.com/me-no-dev/ESPAsyncWebServer/zip/refs/heads/master" -OutFile "$DestinationFolder1\ESPAsyncWebServer.zip" 
+Write-Host " "
 Write-Host "Downloading file: ESPUI.zip"
 Invoke-WebRequest -Uri "https://github.com/s00500/ESPUI/archive/refs/tags/2.2.3.zip" -OutFile "$DestinationFolder1\ESPUI.zip" 
+Write-Host " "
 Write-Host "Downloading file: ArduinoJson.zip"
 Invoke-WebRequest -Uri "https://codeload.github.com/bblanchon/ArduinoJson/zip/refs/heads/7.x" -OutFile "$DestinationFolder1\ArduinoJson.zip"
+Write-Host " "
 Write-Host "Downloading file: LITTLEFS.zip"
 Invoke-WebRequest -Uri "https://codeload.github.com/lorol/LITTLEFS/zip/refs/heads/master" -OutFile "$DestinationFolder1\LITTLEFS.zip" 
+Write-Host " "
 Write-Host "Downloading file: Telegram-Bot.zip"
 Invoke-WebRequest -Uri "https://codeload.github.com/witnessmenow/Universal-Arduino-Telegram-Bot/zip/refs/heads/master" -OutFile "$DestinationFolder1\Telegram-Bot.zip"
+Write-Host " "
 Write-Host "Downloading file: ESP32Time.zip"
 Invoke-WebRequest -Uri "https://codeload.github.com/fbiego/ESP32Time/zip/refs/heads/main" -OutFile "$DestinationFolder1\ESP32Time.zip"
+Write-Host " "
+Write-Host " "
+Write-Host " "
 Write-Host "Downloading code for AWSW-WordClock models now:"
-Write-Host "Downloading file: Code for AWSW WordClock 16x8 LED Matrix 2023"
-Write-Host "Downloading file: Code for AWSW WordClock 16x8 LED Matrix 2024"
+Write-Host " "
+Write-Host "Downloading file: Code for AWSW WordClock 16x8 LED Matrix"
 Invoke-WebRequest -Uri "https://codeload.github.com/AWSW-de/WordClock-16x16-LED-matrix-2023/zip/refs/heads/main" -OutFile "$env:USERPROFILE\Downloads\AWSW-WordClock-16x8-LED-matrix.zip"
+Write-Host " "
 Write-Host "Downloading file: Code for AWSW WordClock 16x16 LED Matrix (Smart variant with Telegram)"
 Invoke-WebRequest -Uri "https://codeload.github.com/AWSW-de/WordClock-16x16-LED-matrix/zip/refs/heads/main" -OutFile "$env:USERPROFILE\Downloads\AWSW-WordClock-16x16-LED-matrix.zip"
 Write-Host " "
@@ -505,17 +517,31 @@ Write-Host " "
 Write-Host "STEP 10 OF" $ScriptSteps "- Unzip library files to Arduino Library folder:"
 Write-Host " "
 Sleep 3
+Write-Host "Unzip Adafruit_NeoPixel.zip..."
 Unzip "$DestinationFolder1\Adafruit_NeoPixel.zip" $DestinationFolder2
+Write-Host "Unzip AsyncTCP.zip..."
 Unzip "$DestinationFolder1\AsyncTCP.zip" $DestinationFolder2
+Write-Host "Unzip ESPAsyncWebServer.zip... "
 Unzip "$DestinationFolder1\ESPAsyncWebServer.zip" $DestinationFolder2
+Write-Host "Unzip ESPUI.zip... "
 Unzip "$DestinationFolder1\ESPUI.zip" $DestinationFolder2
+Write-Host "Unzip ArduinoJson.zip... "
 Unzip "$DestinationFolder1\ArduinoJson.zip" $DestinationFolder2
+Write-Host "Unzip LITTLEFS.zip... "
 Unzip "$DestinationFolder1\LITTLEFS.zip" $DestinationFolder2
+Write-Host "Unzip Telegram-Bot.zip... "
 Unzip "$DestinationFolder1\Telegram-Bot.zip" $DestinationFolder2
+Write-Host "Unzip SP32Time.zip... "
 Unzip "$DestinationFolder1\ESP32Time.zip" $DestinationFolder2
+Write-Host "Unzip AWSW-WordClock-16x8-LED-matrix.zip... "
 Unzip "$env:USERPROFILE\Downloads\AWSW-WordClock-16x8-LED-matrix.zip" "$DestinationFolder0"
+Write-Host "Unzip AWSW-WordClock-16x16-LED-matrix.zip... "
 Unzip "$env:USERPROFILE\Downloads\AWSW-WordClock-16x16-LED-matrix.zip" "$DestinationFolder0"
-clear
+Write-Host " "
+Write-Host " "
+Write-Host "All ZIP archives were decompressed... "
+Write-Host " "
+Sleep 3
 
 
 #####################################################################################################
@@ -531,7 +557,7 @@ New-Item -Path "$DestinationFolder1\CP210x-Driver" -ItemType Directory
 Unzip "$DestinationFolder1\CP210x_Universal_Windows_Driver.zip" "$DestinationFolder1\CP210x-Driver"
 Sleep 1
 Get-ChildItem "$DestinationFolder1\CP210x-Driver" -Recurse -Filter "*inf" | ForEach-Object { PNPUtil.exe /add-driver $_.FullName /install }
-Sleep 1
+Sleep 3
 
 
 #####################################################################################################
